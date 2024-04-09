@@ -11,27 +11,21 @@
 
     private static void ShowFibonachiNumbers(int userInput)
     {
-        List<int> fibonachiNumbers = GetFibLessNum(userInput);
         Console.WriteLine("Числа Фібоначі");
-        foreach (int number in fibonachiNumbers)
-        {
-            Console.Write(number);
-            Console.Write(new string(' ', 3));
-        }
-    }
+        Console.Write(0);
+        Console.Write(new string(' ', 3));
 
-    private static List<int> GetFibLessNum(int number)
-    {
-        List<int> fibnums = new List<int> { 0 };
-        int currNum = 1;
-        int i = 1;
-        while (currNum <= number)
+        int n1 = 0,
+            n2 = 1,
+        currNum = 1;
+        for (int i = 0; currNum <= userInput; i++)
         {
-            fibnums.Add(currNum);
-            currNum = fibnums[i] + fibnums[i - 1];
-            i++;
+            Console.Write(currNum);
+            Console.Write(new string(' ', 3));
+            currNum = n1 + n2;
+            n1 = n2;
+            n2 = currNum;
         }
-        return fibnums;
     }
 
     private static int GetUserInput()

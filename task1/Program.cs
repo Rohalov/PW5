@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -19,16 +21,26 @@ internal class Program
 
     private static bool isPrime(double number)
     {
-        List<double> dividers = new List<double>();
-        for (int i = 1; i <= number; i++)
+        if (number <= 3)
         {
-            var div = number / i;
-            if (Math.Round(div, 0) == div)
-            {
-                dividers.Add(div);
-            }
+            return number > 1;
         }
-        return dividers.Count == 2;
+        else if (number % 2 == 0 || number % 3 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            for (int i = 5; i * i <= number; i += 6)
+            {
+                if (number % i == 0 || number % (i + 2) == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
     private static double GetUserInput()
